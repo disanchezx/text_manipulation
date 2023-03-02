@@ -12,43 +12,17 @@ import pandas as pd
 
 with open("/content/drive/MyDrive/2023-1/Seguridad de redes/Corte 1/libro_muertos.txt", mode='r', encoding='latin-1') as f:
     tx = f.read()
-tx
-
-tx = tx.replace('\n', '')
-tx = tx.replace("/", "")
-tx = tx.replace('.', '')
-tx = tx.replace(',', '')
-tx = tx.replace('-', '')
-tx = tx.replace('"', '')
-tx = tx.replace('0', '')
-tx = tx.replace('1', '')
-tx = tx.replace('2', '')
-tx = tx.replace('3', '')
-tx = tx.replace('4', '')
-tx = tx.replace('5', '')
-tx = tx.replace('6', '')
-tx = tx.replace('7', '')
-tx = tx.replace('8', '')
-tx = tx.replace('9', '')
-tx = tx.replace('¿', '')
-tx = tx.replace('?', '')
-tx = tx.replace('!', '')
-tx = tx.replace('¡', '')
-tx = tx.replace(';', '')
-tx = tx.replace(':', '')
-tx = tx.replace('«', '')
-tx = tx.replace('»', '')
+    
+tx_clean = ('')
 tx = tx.lower()
-print(tx)
-
-tx
+clean = ['a','b','c','d','e','f','g','h','i','j','k','l',
+         'm','n','o','p','q','r','s','t','u','v','w','x',
+         'y','z',' ','á','é','í','ó','ú']
+for i in tx:
+  if i in clean:
+    tx_clean += i
 
 tx_split = tx.split()
-print(len(tx_split))
-print(tx_split)
-len(tx_split[2])
-
-print("En el texto hay",len(tx_split), "palabras")
 
 tx_two=[]
 for i in range(len(tx_split)):
@@ -76,23 +50,3 @@ print('En el texto hay', round(len(tx_four)/4), 'palabras de cuatro letras')
 print('************************************************')
 print('La palabra de dos letras que más se repite en el texto es: de')
 print('La palabra de tres letras que más se repite en el texto es: que')
-
-# ChatGPT
-palabras = tx_split
-cont2 = 0
-cont3 = 0
-cont4 = 0
-
-for palabra in palabras:
-    if len(palabra) == 2:
-        cont2 += 1
-    elif len(palabra) == 3:
-        cont3 += 1
-    elif len(palabra) == 4:
-        cont4 += 1
-
-total = cont2 + cont3 + cont4
-print(f"Palabras de dos letras: {cont2}")
-print(f"Palabras de tres letras: {cont3}")
-print(f"Palabras de cuatro letras: {cont4}")
-print(f"Total de palabras de dos, tres y cuatro letras: {total}")
